@@ -23,4 +23,13 @@ main() {
     //怎么获取 index
     print(index);
   });
+
+  var v1 = 10 ~/ 3;
+  print(v1); // 3
+
+  var add = (int a, {int b = 1, int? c}) {
+    return a + b;
+  };
+
+  add(1, b: 2, c: 3);
 }
