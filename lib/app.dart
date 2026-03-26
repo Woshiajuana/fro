@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fro/pages/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -8,7 +9,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       // 标题
       title: 'FRO',
-      
+      home: const HomePage(),
     );
   }
 }
