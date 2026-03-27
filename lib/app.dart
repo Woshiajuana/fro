@@ -1,5 +1,8 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
+import 'package:fro/pages/clickable_page.dart';
 import 'package:fro/pages/home_page.dart';
+import 'package:fro/pages/index_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +12,18 @@ class App extends StatelessWidget {
     return MaterialApp(
       // 标题
       title: 'FRO',
-      home: const HomePage(),
+      home: const ClickablePage(),
+
+      // 配置 toast
+      builder: BotToastInit(),
+      navigatorObservers: [BotToastNavigatorObserver()],
+
+      // 配置 routes
+      initialRoute: '/clickable',
+      routes: {
+        '/': (context) => const IndexPage(),
+        '/clickable': (context) => const ClickablePage(),
+      },
     );
   }
 }
