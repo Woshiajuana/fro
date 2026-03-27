@@ -18,7 +18,7 @@ class App extends StatelessWidget {
       navigatorObservers: [BotToastNavigatorObserver()],
 
       // 配置 routes
-      initialRoute: '/clickable',
+      initialRoute: '/',
       routes: {
         '/': (context) => const IndexPage(),
         '/clickable': (context) => const ClickablePage(),

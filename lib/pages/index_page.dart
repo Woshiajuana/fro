@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:fro/pages/home_page.dart';
+import 'package:fro/pages/mine_page.dart';
+import 'package:fro/pages/playground_page.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
@@ -10,6 +13,8 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: PageView(children: [HomePage(), PlaygroundPage(), MinePage()]),
+    );
   }
 }
