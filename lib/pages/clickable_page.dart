@@ -43,7 +43,7 @@ class _ClickablePageState extends State<ClickablePage> {
               onTap: () => FroToast.showToast("点了"),
               onLongPress: (active) =>
                   FroToast.showToast(active ? "长按" : "取消长按"),
-              child: const Text("点我"),
+              child: SizedBox(width: 100, height: 100, child: const Text("点我")),
             ),
             const SizedBox(height: 20),
 

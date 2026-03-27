@@ -107,13 +107,13 @@ class _FroClickableState extends State<FroClickable> {
       if (widget.pressedColor != null) {
         color = widget.pressedColor!;
       } else {
-        color = color.withOpacity(widget.pressedOpacity);
+        color = color.withValues(alpha: widget.pressedOpacity);
       }
     } else if (state == WidgetState.disabled) {
       if (widget.disabledColor != null) {
         color = widget.disabledColor!;
       } else {
-        color = color.withOpacity(widget.disabledOpacity);
+        color = color.withValues(alpha: widget.disabledOpacity);
       }
     }
     return ColoredBox(color: color, child: child);

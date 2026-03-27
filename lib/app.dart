@@ -12,7 +12,6 @@ class App extends StatelessWidget {
     return MaterialApp(
       // 标题
       title: 'FRO',
-      home: const ClickablePage(),
 
       // 配置 toast
       builder: BotToastInit(),
