@@ -1,7 +1,6 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:fro/pages/clickable_page.dart';
-import 'package:fro/pages/home_page.dart';
 import 'package:fro/pages/index_page.dart';
 
 class App extends StatelessWidget {
