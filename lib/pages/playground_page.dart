@@ -10,6 +10,6 @@ class PlaygroundPage extends StatefulWidget {
 class _PlaygroundPageState extends State<PlaygroundPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(appBar: AppBar(title: const Text('演练场')));
   }
 }

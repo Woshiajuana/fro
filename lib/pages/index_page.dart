@@ -40,7 +40,6 @@ class _IndexPageState extends State<IndexPage> {
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: FroTabbar(
-        height: 100,
         items: _tabbarItems,
         currentIndex: _currentIndex,
         backgroundColor: Colors.amber,
