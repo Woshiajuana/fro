@@ -14,7 +14,12 @@ class IndexPage extends StatefulWidget {
 class _IndexPageState extends State<IndexPage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [HomePage(), PlaygroundPage(), MinePage()];
+  final List<Widget Function()> _pageBuilders = [
+    () => const HomePage(),
+    () => const PlaygroundPage(),
+    () => const MinePage(),
+  ];
+  late final List<Widget?> _loadedPages;
   final List<FroTabbarItem> _tabbarItems = const [
     FroTabbarItem(
       icon: Icon(Icons.home_outlined),
@@ -36,18 +41,36 @@ class _IndexPageState extends State<IndexPage> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _loadedPages = List<Widget?>.filled(_pageBuilders.length, null);
+    _loadedPages[_currentIndex] = _pageBuilders[_currentIndex]();
+  }
+
+  void _switchTab(int index) {
+    if (_loadedPages[index] == null) {
+      _loadedPages[index] = _pageBuilders[index]();
+    }
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _currentIndex, children: _pages),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: List<Widget>.generate(
+          _loadedPages.length,
+          (index) => _loadedPages[index] ?? const SizedBox.shrink(),
+        ),
+      ),
       bottomNavigationBar: FroTabbar(
         items: _tabbarItems,
         currentIndex: _currentIndex,
         backgroundColor: Colors.amber,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: _switchTab,
       ),
     );
   }
