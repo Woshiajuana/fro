@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-class FroTabbarItem extends StatelessWidget {
-  const FroTabbarItem({super.key});
+class FroTabbarItem {
+  const FroTabbarItem({
+    required this.icon,
+    required this.activeIcon,
+    required this.text,
+    this.dot = false,
+    this.badge,
+  });
 
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  final Widget icon;
+  final Widget activeIcon;
+  final String text;
+  final bool dot;
+  final String? badge;
 }
