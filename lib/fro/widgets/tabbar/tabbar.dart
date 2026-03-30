@@ -9,7 +9,7 @@ class FroTabbar extends StatelessWidget {
     this.height = 56,
     this.backgroundColor = Colors.white,
     this.activeColor = const Color(0xFF1989FA),
-    this.inactiveColor = const Color(0xFF646566),
+    this.color = const Color(0xFF999999),
     this.borderColor = const Color(0xFFF2F3F5),
     super.key,
   });
@@ -20,7 +20,7 @@ class FroTabbar extends StatelessWidget {
   final double height;
   final Color backgroundColor;
   final Color activeColor;
-  final Color inactiveColor;
+  final Color color;
   final Color borderColor;
 
   @override
@@ -43,7 +43,7 @@ class FroTabbar extends StatelessWidget {
               badge: items[index].badge,
               active: currentIndex == index,
               activeColor: activeColor,
-              inactiveColor: inactiveColor,
+              color: color,
               onTap: () => onTap?.call(index),
             ),
           ),
@@ -63,7 +63,7 @@ class _FroTabbarButton extends StatelessWidget {
     this.badge,
     this.onTap,
     this.activeColor = const Color(0xFF1989FA),
-    this.inactiveColor = const Color(0xFF646566),
+    this.color = const Color(0xFF646566),
   });
 
   final Widget icon;
@@ -74,7 +74,7 @@ class _FroTabbarButton extends StatelessWidget {
   final String? badge;
   final VoidCallback? onTap;
   final Color activeColor;
-  final Color inactiveColor;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class _FroTabbarButton extends StatelessWidget {
                   IconTheme(
                     data: IconThemeData(
                       size: 24,
-                      color: active ? activeColor : inactiveColor,
+                      color: active ? activeColor : color,
                     ),
                     child: active ? activeIcon : icon,
                   ),
@@ -146,7 +146,7 @@ class _FroTabbarButton extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: active ? activeColor : inactiveColor,
+                  color: active ? activeColor : color,
                   fontSize: 12,
                   height: 1.2,
                 ),

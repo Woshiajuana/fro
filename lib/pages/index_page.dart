@@ -13,7 +13,7 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
 
   final List<Widget Function()> _pageBuilders = [
     () => const HomePage(),
@@ -54,7 +54,6 @@ class _IndexPageState extends State<IndexPage> {
             icon: Icon(IconfontIcons.wapHomeO),
             activeIcon: Icon(IconfontIcons.wapHome),
             text: '首页',
-            dot: true,
           ),
           FroTabbarItem(
             icon: Icon(IconfontIcons.videoO),
@@ -69,7 +68,6 @@ class _IndexPageState extends State<IndexPage> {
           ),
         ],
         currentIndex: _currentIndex,
-        backgroundColor: Colors.amber,
         onTap: _switchTab,
       ),
     );
