@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:fro/fro/index.dart';
 
 class PlaygroundPage extends StatelessWidget {
@@ -23,14 +24,14 @@ class PlaygroundPage extends StatelessWidget {
         children: [
           ...widgets.map(
             (widget) => FroClickable(
-              onTap: () => Navigator.pushNamed(context, widget['path']),
+              onTap: () => context.push(widget['path'] as String),
               color: Colors.white,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(widget['icon'], size: 42),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(widget['label']),
                 ],
               ),
