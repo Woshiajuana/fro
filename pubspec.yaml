@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   bot_toast: ^4.1.3
   flutter_inappwebview: ^6.1.5
+  go_router: ^17.1.0
 
 dev_dependencies:
   flutter_test:
