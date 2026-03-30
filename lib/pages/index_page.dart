@@ -3,6 +3,7 @@ import 'package:fro/fro/widgets/tabbar/index.dart';
 import 'package:fro/pages/home_page.dart';
 import 'package:fro/pages/mine_page.dart';
 import 'package:fro/pages/playground_page.dart';
+import 'package:fro/utils/index.dart';
 
 class IndexPage extends StatefulWidget {
   const IndexPage({super.key});
@@ -20,25 +21,6 @@ class _IndexPageState extends State<IndexPage> {
     () => const MinePage(),
   ];
   late final List<Widget?> _loadedPages;
-  final List<FroTabbarItem> _tabbarItems = const [
-    FroTabbarItem(
-      icon: Icon(Icons.home_outlined),
-      activeIcon: Icon(Icons.home),
-      text: '首页',
-      dot: true,
-    ),
-    FroTabbarItem(
-      icon: Icon(Icons.sports_esports_outlined),
-      activeIcon: Icon(Icons.sports_esports),
-      text: '演练场',
-      badge: '10',
-    ),
-    FroTabbarItem(
-      icon: Icon(Icons.person_outline),
-      activeIcon: Icon(Icons.person),
-      text: '我的',
-    ),
-  ];
 
   @override
   void initState() {
@@ -67,7 +49,25 @@ class _IndexPageState extends State<IndexPage> {
         ),
       ),
       bottomNavigationBar: FroTabbar(
-        items: _tabbarItems,
+        items: const [
+          FroTabbarItem(
+            icon: Icon(IconfontIcons.wapHomeO),
+            activeIcon: Icon(IconfontIcons.wapHome),
+            text: '首页',
+            dot: true,
+          ),
+          FroTabbarItem(
+            icon: Icon(IconfontIcons.videoO),
+            activeIcon: Icon(IconfontIcons.video),
+            text: '演练场',
+            badge: '10',
+          ),
+          FroTabbarItem(
+            icon: Icon(IconfontIcons.managerO),
+            activeIcon: Icon(IconfontIcons.manager),
+            text: '我的',
+          ),
+        ],
         currentIndex: _currentIndex,
         backgroundColor: Colors.amber,
         onTap: _switchTab,
