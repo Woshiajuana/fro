@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fro/fro/index.dart';
 
-class PlaygroundPage extends StatefulWidget {
+class PlaygroundPage extends StatelessWidget {
   const PlaygroundPage({super.key});
 
-  @override
-  State<PlaygroundPage> createState() => _PlaygroundPageState();
-}
-
-class _PlaygroundPageState extends State<PlaygroundPage> {
   @override
   Widget build(BuildContext context) {
     const List<Map<String, dynamic>> widgets = [

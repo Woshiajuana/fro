@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:fro/fro/index.dart';
 
-class ClickablePage extends StatefulWidget {
+class ClickablePage extends StatelessWidget {
   const ClickablePage({super.key});
 
   @override
-  State<ClickablePage> createState() => _ClickablePageState();
-}
-
-class _ClickablePageState extends State<ClickablePage> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("万能点击组件")),
+      appBar: AppBar(title: const Text("可点击")),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,

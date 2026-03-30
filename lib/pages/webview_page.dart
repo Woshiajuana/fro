@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class WebviewPage extends StatefulWidget {
+class WebviewPage extends StatelessWidget {
   const WebviewPage({super.key});
 
   @override
-  State<WebviewPage> createState() => _WebviewPageState();
-}
-
-class _WebviewPageState extends State<WebviewPage> {
-  @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Webview')),
+      body: Center(child: Column(children: [
+            
+          ],
+        )),
+    );
   }
 }
