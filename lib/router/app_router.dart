@@ -1,4 +1,3 @@
-import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fro/pages/cell_page.dart';
@@ -13,66 +12,68 @@ import 'package:fro/pages/webview_page.dart';
 class AppRouter {
   AppRouter._();
 
-  static final GoRouter router = GoRouter(
-    initialLocation: '/mine',
-    observers: [BotToastNavigatorObserver()],
-    routes: [
-      GoRoute(path: '/', redirect: (context, state) => '/playground'),
-      StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) =>
-            IndexPage(navigationShell: navigationShell),
-        branches: [
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/home',
-                pageBuilder: (context, state) =>
-                    _buildCupertinoPage(state, const HomePage()),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/playground',
-                pageBuilder: (context, state) =>
-                    _buildCupertinoPage(state, const PlaygroundPage()),
-              ),
-            ],
-          ),
-          StatefulShellBranch(
-            routes: [
-              GoRoute(
-                path: '/mine',
-                pageBuilder: (context, state) =>
-                    _buildCupertinoPage(state, const MinePage()),
-              ),
-            ],
-          ),
-        ],
-      ),
-      GoRoute(
-        path: '/cell',
-        pageBuilder: (context, state) =>
-            _buildCupertinoPage(state, const CellPage()),
-      ),
-      GoRoute(
-        path: '/clickable',
-        pageBuilder: (context, state) =>
-            _buildCupertinoPage(state, const ClickablePage()),
-      ),
-      GoRoute(
-        path: '/skeleton',
-        pageBuilder: (context, state) =>
-            _buildCupertinoPage(state, const SkeletonPage()),
-      ),
-      GoRoute(
-        path: '/webview',
-        pageBuilder: (context, state) =>
-            _buildCupertinoPage(state, const WebviewPage()),
-      ),
-    ],
-  );
+  static GoRouter createRouter({List<NavigatorObserver> observers = const []}) {
+    return GoRouter(
+      initialLocation: '/mine',
+      observers: observers,
+      routes: [
+        GoRoute(path: '/', redirect: (context, state) => '/playground'),
+        StatefulShellRoute.indexedStack(
+          builder: (context, state, navigationShell) =>
+              IndexPage(navigationShell: navigationShell),
+          branches: [
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/home',
+                  pageBuilder: (context, state) =>
+                      _buildCupertinoPage(state, const HomePage()),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/playground',
+                  pageBuilder: (context, state) =>
+                      _buildCupertinoPage(state, const PlaygroundPage()),
+                ),
+              ],
+            ),
+            StatefulShellBranch(
+              routes: [
+                GoRoute(
+                  path: '/mine',
+                  pageBuilder: (context, state) =>
+                      _buildCupertinoPage(state, const MinePage()),
+                ),
+              ],
+            ),
+          ],
+        ),
+        GoRoute(
+          path: '/cell',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const CellPage()),
+        ),
+        GoRoute(
+          path: '/clickable',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const ClickablePage()),
+        ),
+        GoRoute(
+          path: '/skeleton',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const SkeletonPage()),
+        ),
+        GoRoute(
+          path: '/webview',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const WebviewPage()),
+        ),
+      ],
+    );
+  }
 
   static CupertinoPage<void> _buildCupertinoPage(
     GoRouterState state,
