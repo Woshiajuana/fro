@@ -1,5 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fro/pages/cell_page.dart';
 import 'package:fro/pages/clickable_page.dart';
@@ -27,7 +27,7 @@ class AppRouter {
               GoRoute(
                 path: '/home',
                 pageBuilder: (context, state) =>
-                    _buildSlidePage(state, const HomePage()),
+                    _buildCupertinoPage(state, const HomePage()),
               ),
             ],
           ),
@@ -36,7 +36,7 @@ class AppRouter {
               GoRoute(
                 path: '/playground',
                 pageBuilder: (context, state) =>
-                    _buildSlidePage(state, const PlaygroundPage()),
+                    _buildCupertinoPage(state, const PlaygroundPage()),
               ),
             ],
           ),
@@ -45,7 +45,7 @@ class AppRouter {
               GoRoute(
                 path: '/mine',
                 pageBuilder: (context, state) =>
-                    _buildSlidePage(state, const MinePage()),
+                    _buildCupertinoPage(state, const MinePage()),
               ),
             ],
           ),
@@ -54,42 +54,30 @@ class AppRouter {
       GoRoute(
         path: '/cell',
         pageBuilder: (context, state) =>
-            _buildSlidePage(state, const CellPage()),
+            _buildCupertinoPage(state, const CellPage()),
       ),
       GoRoute(
         path: '/clickable',
         pageBuilder: (context, state) =>
-            _buildSlidePage(state, const ClickablePage()),
+            _buildCupertinoPage(state, const ClickablePage()),
       ),
       GoRoute(
         path: '/skeleton',
         pageBuilder: (context, state) =>
-            _buildSlidePage(state, const SkeletonPage()),
+            _buildCupertinoPage(state, const SkeletonPage()),
       ),
       GoRoute(
         path: '/webview',
         pageBuilder: (context, state) =>
-            _buildSlidePage(state, const WebviewPage()),
+            _buildCupertinoPage(state, const WebviewPage()),
       ),
     ],
   );
 
-  static CustomTransitionPage<void> _buildSlidePage(
+  static CupertinoPage<void> _buildCupertinoPage(
     GoRouterState state,
     Widget child,
   ) {
-    return CustomTransitionPage<void>(
-      key: state.pageKey,
-      child: child,
-      transitionDuration: const Duration(milliseconds: 300),
-      reverseTransitionDuration: const Duration(milliseconds: 300),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        final Animation<Offset> position = Tween<Offset>(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).chain(CurveTween(curve: Curves.easeOutCubic)).animate(animation);
-        return SlideTransition(position: position, child: child);
-      },
-    );
+    return CupertinoPage<void>(key: state.pageKey, child: child);
   }
 }
