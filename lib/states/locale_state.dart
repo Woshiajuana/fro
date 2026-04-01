@@ -5,9 +5,9 @@ class LocaleState extends ChangeNotifier {
   LocaleState()
     : _languageCode = _languageCodeStorage.getItem(_systemLanguageCode);
 
-  static const String _systemLanguageCode = 'system';
-  static const List<String> _supportedCodes = ['en', 'zh'];
-  static final FroStorage<String> _languageCodeStorage = FroStorage<String>(
+  static const _systemLanguageCode = 'system';
+  static const _supportedCodes = ['en', 'zh'];
+  static final _languageCodeStorage = FroStorage<String>(
     key: 'app.locale.languageCode',
     initialValue: _systemLanguageCode,
   );
