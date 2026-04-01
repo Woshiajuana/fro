@@ -1,0 +1,9 @@
+# 将 应用资源包[] (.arb) 的输入路径指定为 ${FLUTTER_PROJECT}/lib/l10n。
+# .arb 文件提供了应用的本地化资源。
+arb-dir: lib/l10n
+# 将英文的语言模板设定为 app_en.arb。
+template-arb-file: app_zh.arb
+# 指定 Flutter 生成本地化内容到 app_localizations.dart 文件。
+output-localization-file: app_localizations.dart
+# 指定本地化类 getter 是否可为空。
+nullable-getter: false

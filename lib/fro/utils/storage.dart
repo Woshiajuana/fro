@@ -1,11 +1,13 @@
 import 'sp.dart';
 
 class FroStorage<T> {
-  FroStorage({required this.key});
+  FroStorage({required this.key, this.initialValue});
   final String key;
 
+  final T? initialValue;
+
   T getItem([T? defaultValue]) {
-    return FroSp().getItem(key) ?? defaultValue;
+    return FroSp().getItem(key) ?? defaultValue ?? initialValue;
   }
 
   Future<void> setItem(T value) async {
