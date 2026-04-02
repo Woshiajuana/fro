@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fro/fro/widgets/clickable/clickable.dart';
 
 class FroCell extends StatelessWidget {
   const FroCell({
@@ -23,6 +24,9 @@ class FroCell extends StatelessWidget {
 
   /// label text
   final Widget? label;
+
+  /// 描述信息
+  final String? description;
 
   /// value text
   final String? valueText;
