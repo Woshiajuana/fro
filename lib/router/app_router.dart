@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:fro/pages/setting/language_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:fro/pages/cell_page.dart';
 import 'package:fro/pages/clickable_page.dart';
@@ -14,7 +15,7 @@ class AppRouter {
 
   static GoRouter createRouter({List<NavigatorObserver> observers = const []}) {
     return GoRouter(
-      initialLocation: '/mine',
+      initialLocation: '/language',
       observers: observers,
       routes: [
         GoRoute(path: '/', redirect: (context, state) => '/playground'),
@@ -70,6 +71,11 @@ class AppRouter {
           path: '/webview',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const WebviewPage()),
+        ),
+        GoRoute(
+          path: '/language',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const LanguagePage()),
         ),
       ],
     );
