@@ -10,16 +10,18 @@ class CellPage extends StatelessWidget {
       appBar: AppBar(title: const Text('单元格')),
       body: ListView(
         children: [
-          ListTile()
+          const ListTile(title: Text('Cell 组件示例')),
           FroCellGroup(
             titleText: '基础',
             children: [
               FroCell(labelText: '仅标题'),
+              FroCell(labelText: '带描述', descriptionText: '这里是描述文案，展示在标题下方'),
               FroCell(labelText: '带箭头', arrow: true),
               FroCell(labelText: '带值', valueText: '内容描述', arrow: true),
               FroCell(
-                icon: Icons.settings,
+                leadingIcon: Icons.settings,
                 labelText: '带图标',
+                descriptionText: '点击后触发回调',
                 valueText: '去设置',
                 arrow: true,
                 onTap: () => FroToast.showToast('点击了设置项'),
@@ -31,6 +33,10 @@ class CellPage extends StatelessWidget {
             children: [
               FroCell(
                 label: const Text('自定义标题'),
+                description: const Text(
+                  '自定义描述组件',
+                  style: TextStyle(fontSize: 12, color: Color(0xFF969799)),
+                ),
                 value: const Text('自定义值'),
                 trailing: const Icon(Icons.info_outline, size: 18),
               ),
@@ -43,7 +49,7 @@ class CellPage extends StatelessWidget {
           ),
           FroCellGroup(
             titleText: '撑满宽度',
-            style: FroCellGroupStyle.plain,
+            inset: false,
             children: [
               FroCell(labelText: '无圆角样式', valueText: 'Plain'),
               FroCell(labelText: '撑满宽度', arrow: true),

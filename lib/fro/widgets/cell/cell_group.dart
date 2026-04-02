@@ -18,11 +18,62 @@ class FroCellGroup extends StatelessWidget {
   /// 标题组件
   final Widget? title;
 
-  /// 是否内边距
+  /// 是否内边距，true 就展示卡片布局，false 就展示平铺布局
   final bool inset;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final Widget? titleWidget =
+        title ??
+        (titleText != null
+            ? Padding(
+                padding: EdgeInsets.only(left: inset ? 4 : 16, bottom: 8),
+                child: Text(
+                  titleText!,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF969799),
+                  ),
+                ),
+              )
+            : null);
+
+    return Container(
+      margin: inset
+          ? const EdgeInsets.fromLTRB(12, 12, 12, 0)
+          : const EdgeInsets.only(top: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          if (titleWidget != null) titleWidget,
+          ClipRRect(
+            borderRadius: inset
+                ? const BorderRadius.all(Radius.circular(8))
+                : BorderRadius.zero,
+            child: DecoratedBox(
+              decoration: const BoxDecoration(color: Colors.white),
+              child: Column(
+                children: List<Widget>.generate(children.length, (index) {
+                  if (index == children.length - 1) {
+                    return children[index];
+                  }
+                  return Column(
+                    children: [
+                      children[index],
+                      Divider(
+                        height: 1,
+                        thickness: 0.5,
+                        color: const Color(0xFFF2F3F5),
+                        indent: inset ? 16 : 0,
+                      ),
+                    ],
+                  );
+                }),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
