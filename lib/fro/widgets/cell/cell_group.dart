@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 
 class FroCellGroup extends StatelessWidget {
   const FroCellGroup({
+    super.key,
     required this.children,
     this.titleText,
     this.title,
-    this.margin = const EdgeInsets.fromLTRB(12, 12, 12, 0),
-    this.backgroundColor = Colors.white,
-    this.borderRadius = const BorderRadius.all(Radius.circular(8)),
-    this.style = FroCellGroupStyle.card,
-    super.key,
+    this.inset = true,
   });
 
+  /// 单元格列表
   final List<Widget> children;
+
+  /// 标题
   final String? titleText;
+
+  /// 标题组件
   final Widget? title;
-  final EdgeInsetsGeometry margin;
-  final Color backgroundColor;
-  final BorderRadius borderRadius;
-  final FroCellGroupStyle style;
+
+  /// 是否内边距
+  final bool inset;
 
   @override
   Widget build(BuildContext context) {
