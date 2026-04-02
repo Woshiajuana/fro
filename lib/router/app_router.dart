@@ -15,7 +15,7 @@ class AppRouter {
 
   static GoRouter createRouter({List<NavigatorObserver> observers = const []}) {
     return GoRouter(
-      initialLocation: '/language',
+      initialLocation: '/cell',
       observers: observers,
       routes: [
         GoRoute(path: '/', redirect: (context, state) => '/playground'),
