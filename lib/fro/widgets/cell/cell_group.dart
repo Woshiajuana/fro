@@ -23,6 +23,31 @@ class FroCellGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> content = [];
+    for (var i = 0; i < children.length; i++) {
+      content.add(children[i]);
+      if (i != children.length - 1) {
+        content.add(Divider(height: 1, thickness: 0.5, indent: inset ? 16 : 0));
+      }
+    }
+
+    Widget result = Container(
+      margin: EdgeInsets.only(top: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border(
+          top: BorderSide(color: Colors.grey, width: 0.5),
+          bottom: BorderSide(color: Colors.grey, width: 0.5),
+        ),
+      ),
+      child: Column(children: content),
+    );
+
+    return result;
+  }
+
+  @override
+  Widget build1(BuildContext context) {
     final Widget? titleWidget =
         title ??
         (titleText != null
