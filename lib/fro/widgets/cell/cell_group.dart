@@ -21,6 +21,22 @@ class FroCellGroup extends StatelessWidget {
   /// 是否内边距，true 就展示卡片布局，false 就展示平铺布局
   final bool inset;
 
+  Widget? _getTitleWidget() {
+    Widget? result;
+    if (title != null) {
+      result = title;
+    } else if (titleText != null) {
+      result = Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 6),
+        child: Text(
+          titleText!,
+          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+        ),
+      );
+    }
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     List<Widget> content = [];
@@ -42,6 +58,14 @@ class FroCellGroup extends StatelessWidget {
       ),
       child: Column(children: content),
     );
+
+    Widget? title = _getTitleWidget();
+    if (title != null) {
+      result = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [title, result],
+      );
+    }
 
     return result;
   }
