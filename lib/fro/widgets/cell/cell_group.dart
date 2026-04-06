@@ -59,20 +59,20 @@ class FroCellGroup extends StatelessWidget {
     Widget result;
     if (inset) {
       result = Container(
-        margin: EdgeInsets.only(left: 16, right: 16),
+        margin: const EdgeInsets.only(left: 16, right: 16),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(color: Colors.grey, width: 0.5),
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(8),
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(8),
           child: Column(children: content),
         ),
       );
     } else {
       result = Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           border: Border(
             top: BorderSide(color: Colors.grey, width: 0.5),
