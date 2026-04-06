@@ -21,24 +21,13 @@ class FroCellGroup extends StatelessWidget {
   /// 是否内边距，true 就展示卡片布局，false 就展示平铺布局
   final bool inset;
 
-  Widget? _getTitleWidget() {
-    Widget? result;
-    if (title != null) {
-      result = title;
-    } else if (titleText != null) {
-      result = Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
-        child: Text(
-          titleText!,
-          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
-        ),
-      );
-    }
-    return result;
-  }
-
   @override
   Widget build(BuildContext context) {
+    // 没有子组件
+    if (children.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     // 子组件列表
     List<Widget> content = [];
     for (var i = 0; i < children.length; i++) {
@@ -56,9 +45,9 @@ class FroCellGroup extends StatelessWidget {
     }
 
     // 容器
-    Widget result;
+    Widget current;
     if (inset) {
-      result = Container(
+      current = Container(
         margin: const EdgeInsets.only(left: 16, right: 16),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -71,7 +60,7 @@ class FroCellGroup extends StatelessWidget {
         ),
       );
     } else {
-      result = Container(
+      current = Container(
         decoration: const BoxDecoration(
           color: Colors.white,
           border: Border(
@@ -84,14 +73,26 @@ class FroCellGroup extends StatelessWidget {
     }
 
     // 标题组件
-    Widget? title = _getTitleWidget();
+    Widget? titleWidget;
     if (title != null) {
-      result = Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [title, result],
+      titleWidget = title;
+    } else if (titleText != null) {
+      titleWidget = Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
+        child: Text(
+          titleText!,
+          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+        ),
       );
     }
 
-    return result;
+    if (titleWidget != null) {
+      current = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [titleWidget, current],
+      );
+    }
+
+    return current;
   }
 }
