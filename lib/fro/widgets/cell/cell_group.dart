@@ -60,41 +60,16 @@ class FroCellGroup extends StatelessWidget {
     if (inset) {
       result = Container(
         margin: EdgeInsets.only(left: 16, right: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.grey, width: 0.5),
+          borderRadius: BorderRadius.circular(16),
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.grey, width: 0.5),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Column(children: content),
-          ),
+          child: Column(children: content),
         ),
       );
-      // result = Container(
-      //   padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      //   decoration: BoxDecoration(
-      //     color: Colors.white,
-      //     borderRadius: BorderRadius.circular(20.0),
-      //     border: Border.all(color: Colors.blue, width: 1.5),
-      //   ),
-      //   child: Text(
-      //     '圆角边框按钮',
-      //     style: TextStyle(color: Colors.blue, fontSize: 16),
-      //   ),
-      // );
-      // result = ClipRRect(
-      //   // borderRadius: inset
-      //   //     ? const BorderRadius.all(Radius.circular(8))
-      //   //     : BorderRadius.zero,
-      //   borderRadius: BorderRadius.all(Radius.circular(30)),
-      //   child: Container(
-      //     margin: EdgeInsets.only(left: 16, right: 16),
-      //     decoration: const BoxDecoration(color: Colors.white),
-      //     child: Column(children: content),
-      //   ),
-      // );
     } else {
       result = Container(
         decoration: BoxDecoration(
@@ -118,61 +93,5 @@ class FroCellGroup extends StatelessWidget {
     }
 
     return result;
-  }
-
-  @override
-  Widget build1(BuildContext context) {
-    final Widget? titleWidget =
-        title ??
-        (titleText != null
-            ? Padding(
-                padding: EdgeInsets.only(left: inset ? 4 : 16, bottom: 8),
-                child: Text(
-                  titleText!,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF969799),
-                  ),
-                ),
-              )
-            : null);
-
-    return Container(
-      margin: inset
-          ? const EdgeInsets.fromLTRB(12, 12, 12, 0)
-          : const EdgeInsets.only(top: 12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (titleWidget != null) titleWidget,
-          ClipRRect(
-            borderRadius: inset
-                ? const BorderRadius.all(Radius.circular(8))
-                : BorderRadius.zero,
-            child: Container(
-              decoration: const BoxDecoration(color: Colors.white),
-              child: Column(
-                children: List<Widget>.generate(children.length, (index) {
-                  if (index == children.length - 1) {
-                    return children[index];
-                  }
-                  return Column(
-                    children: [
-                      children[index],
-                      Divider(
-                        height: 1,
-                        thickness: 0.5,
-                        color: const Color(0xFFF2F3F5),
-                        indent: inset ? 16 : 0,
-                      ),
-                    ],
-                  );
-                }),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
   }
 }
