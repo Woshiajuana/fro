@@ -27,7 +27,7 @@ class FroCellGroup extends StatelessWidget {
       result = title;
     } else if (titleText != null) {
       result = Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 6),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
         child: Text(
           titleText!,
           style: TextStyle(fontSize: 13, color: Colors.grey[600]),
@@ -39,26 +39,48 @@ class FroCellGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 子组件列表
     List<Widget> content = [];
     for (var i = 0; i < children.length; i++) {
       content.add(children[i]);
       if (i != children.length - 1) {
-        content.add(Divider(height: 1, thickness: 0.5, indent: inset ? 16 : 0));
+        content.add(
+          Divider(
+            height: 0.5,
+            thickness: 0.5,
+            indent: inset ? 16 : 0,
+            color: Colors.grey,
+          ),
+        );
       }
     }
 
-    Widget result = Container(
-      margin: EdgeInsets.only(top: 10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border(
-          top: BorderSide(color: Colors.grey, width: 0.5),
-          bottom: BorderSide(color: Colors.grey, width: 0.5),
+    // 容器
+    late Widget result;
+    if (inset) {
+      result = Container(
+        margin: EdgeInsets.only(left: 16, right: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(color: Colors.grey, width: 0.5),
+          borderRadius: BorderRadius.circular(8),
         ),
-      ),
-      child: Column(children: content),
-    );
+        child: Column(children: content),
+      );
+    } else {
+      result = Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border(
+            top: BorderSide(color: Colors.grey, width: 0.5),
+            bottom: BorderSide(color: Colors.grey, width: 0.5),
+          ),
+        ),
+        child: Column(children: content),
+      );
+    }
 
+    // 标题组件
     Widget? title = _getTitleWidget();
     if (title != null) {
       result = Column(
