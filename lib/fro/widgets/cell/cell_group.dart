@@ -56,17 +56,45 @@ class FroCellGroup extends StatelessWidget {
     }
 
     // 容器
-    late Widget result;
+    Widget result;
     if (inset) {
       result = Container(
         margin: EdgeInsets.only(left: 16, right: 16),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey, width: 0.5),
-          borderRadius: BorderRadius.circular(8),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(color: Colors.grey, width: 0.5),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Column(children: content),
+          ),
         ),
-        child: Column(children: content),
       );
+      // result = Container(
+      //   padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      //   decoration: BoxDecoration(
+      //     color: Colors.white,
+      //     borderRadius: BorderRadius.circular(20.0),
+      //     border: Border.all(color: Colors.blue, width: 1.5),
+      //   ),
+      //   child: Text(
+      //     '圆角边框按钮',
+      //     style: TextStyle(color: Colors.blue, fontSize: 16),
+      //   ),
+      // );
+      // result = ClipRRect(
+      //   // borderRadius: inset
+      //   //     ? const BorderRadius.all(Radius.circular(8))
+      //   //     : BorderRadius.zero,
+      //   borderRadius: BorderRadius.all(Radius.circular(30)),
+      //   child: Container(
+      //     margin: EdgeInsets.only(left: 16, right: 16),
+      //     decoration: const BoxDecoration(color: Colors.white),
+      //     child: Column(children: content),
+      //   ),
+      // );
     } else {
       result = Container(
         decoration: BoxDecoration(
@@ -121,7 +149,7 @@ class FroCellGroup extends StatelessWidget {
             borderRadius: inset
                 ? const BorderRadius.all(Radius.circular(8))
                 : BorderRadius.zero,
-            child: DecoratedBox(
+            child: Container(
               decoration: const BoxDecoration(color: Colors.white),
               child: Column(
                 children: List<Widget>.generate(children.length, (index) {
