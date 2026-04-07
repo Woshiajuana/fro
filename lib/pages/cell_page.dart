@@ -10,6 +10,12 @@ class CellPage extends StatelessWidget {
       appBar: AppBar(title: const Text('单元格')),
       body: ListView(
         children: [
+          const Wrap(
+            children: [
+              Text('仅标题仅仅标题仅标题仅标题仅标题仅标题标题仅标题仅标题仅标题'),
+              Text('值值值值值值值值值'),
+            ],
+          ),
           const ListTile(title: Text('Cell 组件示例')),
           FroCellGroup(
             titleText: '基础',
@@ -23,7 +29,7 @@ class CellPage extends StatelessWidget {
                 descriptionText: '这里是描述文案，展示在标题下方',
               ),
               const FroCell(labelText: '带箭头', arrow: true),
-              const FroCell(labelText: '带值', valueText: '内容描述', arrow: true),
+              const FroCell(labelText: '带值带值值', valueText: '内容描述', arrow: true),
               FroCell(
                 leadingIcon: Icons.settings,
                 labelText: '带图标',
