@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'cell_theme.dart';
 
 class FroCell extends StatelessWidget {
   const FroCell({
@@ -54,10 +55,15 @@ class FroCell extends StatelessWidget {
   final void Function()? onTap;
 
   List<Widget> _buildLeading(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final FroCellTheme palette =
+        theme.extension<FroCellTheme>() ??
+        FroCellTheme.fallback(theme.brightness);
+
     List<Widget> res = [];
     if (leadingIcon != null) {
       res
-        ..add(Icon(leadingIcon, color: Theme.of(context).primaryColor))
+        ..add(Icon(leadingIcon, color: palette.leadingIconColor))
         ..add(const SizedBox(width: 12));
     }
     if (leading != null) {
@@ -69,10 +75,17 @@ class FroCell extends StatelessWidget {
   }
 
   List<Widget> _buildLabel(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final FroCellTheme palette =
+        theme.extension<FroCellTheme>() ??
+        FroCellTheme.fallback(theme.brightness);
     Widget caption =
         label ??
         (labelText != null
-            ? Text(labelText!, style: const TextStyle(fontSize: 17))
+            ? Text(
+                labelText!,
+                style: TextStyle(fontSize: 17, color: palette.labelColor),
+              )
             : const SizedBox.shrink());
 
     var desc =
@@ -80,7 +93,7 @@ class FroCell extends StatelessWidget {
         (descriptionText != null
             ? Text(
                 descriptionText!,
-                style: const TextStyle(fontSize: 13, color: Colors.grey),
+                style: TextStyle(fontSize: 13, color: palette.descriptionColor),
                 softWrap: true,
               )
             : null);
@@ -99,6 +112,10 @@ class FroCell extends StatelessWidget {
   }
 
   List<Widget> _buildValue(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final FroCellTheme palette =
+        theme.extension<FroCellTheme>() ??
+        FroCellTheme.fallback(theme.brightness);
     Widget? child =
         value ??
         (valueText != null
@@ -107,12 +124,7 @@ class FroCell extends StatelessWidget {
                 textAlign: TextAlign.right,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Theme.of(
-                    context,
-                  ).listTileTheme.textColor?.withAlpha(150),
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: palette.valueColor, fontSize: 16),
               )
             : null);
 
@@ -126,16 +138,16 @@ class FroCell extends StatelessWidget {
   }
 
   List<Widget> _buildArrow(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final FroCellTheme palette =
+        theme.extension<FroCellTheme>() ??
+        FroCellTheme.fallback(theme.brightness);
     List<Widget> res = [];
     if (arrow) {
       res
         ..add(const SizedBox(width: 12))
         ..add(
-          Icon(
-            Icons.arrow_forward_ios,
-            color: Theme.of(context).listTileTheme.iconColor,
-            size: 18,
-          ),
+          Icon(Icons.arrow_forward_ios, color: palette.arrowColor, size: 18),
         );
     }
     return res;
@@ -153,6 +165,11 @@ class FroCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final FroCellTheme palette =
+        theme.extension<FroCellTheme>() ??
+        FroCellTheme.fallback(theme.brightness);
+
     Widget current = ConstrainedBox(
       constraints: const BoxConstraints(minHeight: 54),
       child: Padding(
@@ -174,9 +191,11 @@ class FroCell extends StatelessWidget {
 
     if (onTap != null) {
       current = Material(
-        color: Colors.white,
+        color: color ?? palette.backgroundColor,
         child: InkWell(onTap: onTap, child: current),
       );
+    } else if (color != null) {
+      current = ColoredBox(color: color!, child: current);
     }
 
     return current;

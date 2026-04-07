@@ -8,7 +8,7 @@ class FroCellGroup extends StatelessWidget {
     required this.children,
     this.titleText,
     this.title,
-    this.inset = true,
+    this.inset = false,
   });
 
   /// 单元格列表
@@ -42,7 +42,7 @@ class FroCellGroup extends StatelessWidget {
           Divider(
             height: 0.5,
             thickness: 0.5,
-            indent: inset ? 16 : 0,
+            indent: 16,
             color: palette.dividerColor,
           ),
         );
