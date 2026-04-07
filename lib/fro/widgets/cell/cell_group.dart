@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'cell_group_theme.dart';
+
 class FroCellGroup extends StatelessWidget {
   const FroCellGroup({
     super.key,
@@ -23,12 +25,15 @@ class FroCellGroup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 没有子组件
     if (children.isEmpty) {
       return const SizedBox.shrink();
     }
 
-    // 子组件列表
+    final ThemeData theme = Theme.of(context);
+    final FroCellGroupTheme palette =
+        theme.extension<FroCellGroupTheme>() ??
+        FroCellGroupTheme.fallback(theme.brightness);
+
     List<Widget> content = [];
     for (var i = 0; i < children.length; i++) {
       content.add(children[i]);
@@ -38,20 +43,19 @@ class FroCellGroup extends StatelessWidget {
             height: 0.5,
             thickness: 0.5,
             indent: inset ? 16 : 0,
-            color: Colors.grey,
+            color: palette.dividerColor,
           ),
         );
       }
     }
 
-    // 容器
     Widget current;
     if (inset) {
       current = Container(
         margin: const EdgeInsets.only(left: 16, right: 16),
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey, width: 0.5),
+          color: palette.backgroundColor,
+          border: Border.all(color: palette.borderColor, width: 0.5),
           borderRadius: BorderRadius.circular(8),
         ),
         child: ClipRRect(
@@ -61,18 +65,17 @@ class FroCellGroup extends StatelessWidget {
       );
     } else {
       current = Container(
-        decoration: const BoxDecoration(
-          color: Colors.white,
+        decoration: BoxDecoration(
+          color: palette.backgroundColor,
           border: Border(
-            top: BorderSide(color: Colors.grey, width: 0.5),
-            bottom: BorderSide(color: Colors.grey, width: 0.5),
+            top: BorderSide(color: palette.borderColor, width: 0.5),
+            bottom: BorderSide(color: palette.borderColor, width: 0.5),
           ),
         ),
         child: Column(children: content),
       );
     }
 
-    // 标题组件
     Widget? title;
     if (this.title != null) {
       title = this.title;
@@ -81,7 +84,7 @@ class FroCellGroup extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
         child: Text(
           titleText!,
-          style: TextStyle(fontSize: 13, color: Colors.grey[600]),
+          style: TextStyle(fontSize: 13, color: palette.titleColor),
         ),
       );
     }
