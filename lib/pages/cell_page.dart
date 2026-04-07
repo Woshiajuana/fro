@@ -10,30 +10,59 @@ class CellPage extends StatelessWidget {
       appBar: AppBar(title: const Text('单元格')),
       body: ListView(
         children: [
-          FroCellGroup(
-            titleText: '基础',
+          const FroCellGroup(
+            titleText: '基础用法',
             children: [
-              const FroCell(labelText: '仅标题'),
-              const FroCell(
-                labelText: '这里是描述文案，展示在标题下方这里是描述文案，展示在标题下方这里是描述文案，展示在标题下方',
-              ),
-              const FroCell(
-                labelText: '带描述',
-                descriptionText: '这里是描述文案，展示在标题下方',
-              ),
-              const FroCell(
-                leadingIcon: Icons.settings,
-                labelText: '带箭头',
-                arrow: true,
-              ),
-              const FroCell(labelText: '带值带值值', valueText: '内容描述', arrow: true),
+              FroCell(labelText: '单元格'),
+              FroCell(labelText: '单元格', valueText: '内容'),
               FroCell(
-                leadingIcon: Icons.settings,
-                labelText: '带图标',
-                descriptionText: '点击后触发回调',
-                valueText: '去设置',
+                labelText: '单元格',
+                valueText: '内容',
+                descriptionText: '描述信息',
+              ),
+            ],
+          ),
+          const FroCellGroup(
+            titleText: '卡片风格',
+            inset: true,
+            children: [
+              FroCell(labelText: '单元格'),
+              FroCell(labelText: '单元格', valueText: '内容'),
+              FroCell(
+                labelText: '单元格',
+                valueText: '内容',
+                descriptionText: '描述信息',
+              ),
+            ],
+          ),
+          const FroCellGroup(
+            titleText: '展示图标/箭头',
+            children: [
+              FroCell(
+                icon: Icons.settings,
+                labelText: '单元格',
+                valueText: '内容',
                 arrow: true,
-                onTap: () => FroToast.showToast('点击了设置项'),
+              ),
+              FroCell(
+                icon: Icons.info_outline,
+                labelText: '单元格',
+                valueText: '内容',
+                arrow: true,
+              ),
+            ],
+          ),
+          FroCellGroup(
+            titleText: '可点击',
+            children: [
+              FroCell(
+                icon: Icons.settings,
+                labelText: '单元格',
+                valueText: '内容',
+                arrow: true,
+                onTap: () {
+                  FroToast.showToast('点我了');
+                },
               ),
             ],
           ),
@@ -54,14 +83,6 @@ class CellPage extends StatelessWidget {
                 labelText: '自定义 leading',
                 trailing: Icon(Icons.more_horiz),
               ),
-            ],
-          ),
-          const FroCellGroup(
-            titleText: '圆角',
-            inset: true,
-            children: [
-              FroCell(labelText: '无圆角样式', valueText: 'Plain'),
-              FroCell(labelText: '撑满宽度', arrow: true),
             ],
           ),
         ],

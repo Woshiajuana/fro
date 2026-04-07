@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fro/fro/widgets/cell/cell_theme.dart';
-import 'package:fro/fro/widgets/cell/cell_group_theme.dart';
+import 'package:fro/fro/index.dart';
 
 class AppTheme {
   AppTheme._();
@@ -18,7 +17,7 @@ class AppTheme {
         labelColor: Color(0xFF323233),
         descriptionColor: Color(0xFF969799),
         valueColor: Color(0xFF969799),
-        leadingIconColor: Color(0xFF1989FA),
+        iconColor: Color(0xFF1989FA),
         arrowColor: Color(0xFFC8C9CC),
       ),
       FroCellGroupTheme(
@@ -43,7 +42,7 @@ class AppTheme {
         labelColor: Color(0xFFF2F2F7),
         descriptionColor: Color(0xFF8E8E93),
         valueColor: Color(0xFFAEAEB2),
-        leadingIconColor: Color(0xFF0A84FF),
+        iconColor: Color(0xFF0A84FF),
         arrowColor: Color(0xFF636366),
       ),
       FroCellGroupTheme(

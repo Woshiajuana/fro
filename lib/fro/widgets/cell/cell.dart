@@ -5,7 +5,7 @@ class FroCell extends StatelessWidget {
   const FroCell({
     super.key,
     this.leading,
-    this.leadingIcon,
+    this.icon,
     this.labelText,
     this.label,
     this.descriptionText,
@@ -22,7 +22,7 @@ class FroCell extends StatelessWidget {
   final Widget? leading;
 
   /// 左侧 icon
-  final IconData? leadingIcon;
+  final IconData? icon;
 
   /// 标签
   final String? labelText;
@@ -61,9 +61,9 @@ class FroCell extends StatelessWidget {
         FroCellTheme.fallback(theme.brightness);
 
     List<Widget> res = [];
-    if (leadingIcon != null) {
+    if (icon != null) {
       res
-        ..add(Icon(leadingIcon, color: palette.leadingIconColor))
+        ..add(Icon(icon, color: palette.iconColor))
         ..add(const SizedBox(width: 12));
     }
     if (leading != null) {
