@@ -14,10 +14,16 @@ class CellPage extends StatelessWidget {
           FroCellGroup(
             titleText: '基础',
             children: [
-              FroCell(labelText: '仅标题'),
-              FroCell(labelText: '带描述', descriptionText: '这里是描述文案，展示在标题下方'),
-              FroCell(labelText: '带箭头', arrow: true),
-              FroCell(labelText: '带值', valueText: '内容描述', arrow: true),
+              const FroCell(labelText: '仅标题'),
+              const FroCell(
+                labelText: '这里是描述文案，展示在标题下方这里是描述文案，展示在标题下方这里是描述文案，展示在标题下方',
+              ),
+              const FroCell(
+                labelText: '带描述',
+                descriptionText: '这里是描述文案，展示在标题下方',
+              ),
+              const FroCell(labelText: '带箭头', arrow: true),
+              const FroCell(labelText: '带值', valueText: '内容描述', arrow: true),
               FroCell(
                 leadingIcon: Icons.settings,
                 labelText: '带图标',
@@ -28,26 +34,26 @@ class CellPage extends StatelessWidget {
               ),
             ],
           ),
-          FroCellGroup(
+          const FroCellGroup(
             titleText: '自定义',
             children: [
               FroCell(
-                label: const Text('自定义标题'),
-                description: const Text(
+                label: Text('自定义标题'),
+                description: Text(
                   '自定义描述组件',
                   style: TextStyle(fontSize: 12, color: Color(0xFF969799)),
                 ),
-                value: const Text('自定义值'),
-                trailing: const Icon(Icons.info_outline, size: 18),
+                value: Text('自定义值'),
+                trailing: Icon(Icons.info_outline, size: 18),
               ),
               FroCell(
-                leading: const CircleAvatar(radius: 10, child: Text('A')),
+                leading: CircleAvatar(radius: 10, child: Text('A')),
                 labelText: '自定义 leading',
-                trailing: const Icon(Icons.more_horiz),
+                trailing: Icon(Icons.more_horiz),
               ),
             ],
           ),
-          FroCellGroup(
+          const FroCellGroup(
             titleText: '撑满宽度',
             inset: false,
             children: [

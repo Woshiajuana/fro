@@ -73,11 +73,11 @@ class FroCellGroup extends StatelessWidget {
     }
 
     // 标题组件
-    Widget? titleWidget;
-    if (title != null) {
-      titleWidget = title;
+    Widget? title;
+    if (this.title != null) {
+      title = this.title;
     } else if (titleText != null) {
-      titleWidget = Padding(
+      title = Padding(
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
         child: Text(
           titleText!,
@@ -86,10 +86,10 @@ class FroCellGroup extends StatelessWidget {
       );
     }
 
-    if (titleWidget != null) {
+    if (title != null) {
       current = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [titleWidget, current],
+        children: [title, current],
       );
     }
 
