@@ -21,7 +21,7 @@ class AppRouter {
 
   static GoRouter createRouter({List<NavigatorObserver> observers = const []}) {
     return GoRouter(
-      initialLocation: '/',
+      initialLocation: '/demos/switch',
       observers: observers,
       routes: [
         GoRoute(path: '/', redirect: (context, state) => '/playground'),

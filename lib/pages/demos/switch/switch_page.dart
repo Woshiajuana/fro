@@ -13,7 +13,8 @@ class SwitchPage extends StatelessWidget {
           FroCellGroup(
             children: [
               FroCell(onTap: () => {}, labelText: '开关', arrow: true),
-              FroSwitch(),
+              Switch(value: false, onChanged: (value) => {}),
+              FroSwitch(value: false, onChanged: (value) => {}),
             ],
           ),
         ],
