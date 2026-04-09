@@ -25,7 +25,7 @@ class _SwitchPageState extends State<SwitchPage> {
                 labelText: '基础开关',
                 value: FroSwitch(
                   value: _baseValue,
-                  onChange: (value) {
+                  onChanged: (value) {
                     setState(() {
                       _baseValue = value;
                     });
@@ -37,7 +37,7 @@ class _SwitchPageState extends State<SwitchPage> {
                 descriptionText: '点击后模拟异步请求，结果决定最终状态',
                 value: FroSwitch(
                   value: _asyncValue,
-                  onChange: (value) {
+                  onChanged: (value) {
                     setState(() {
                       _asyncValue = value;
                     });
