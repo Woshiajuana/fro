@@ -7,24 +7,69 @@ import '../../theme/theme.dart';
 @immutable
 class FroSwitchThemeData {
   const FroSwitchThemeData({
-    required this.activeColor,
-    required this.inactiveColor,
-    required this.loadingIndicatorColor,
-    this.width = 52,
-    this.height = 32,
-    this.padding = 4,
-    this.thumbSize = 24,
-    this.animationDuration = const Duration(milliseconds: 180),
-  });
+    this.activeColor,
+    this.inactiveColor,
+    this.loadingIndicatorColor,
+    this.width,
+    this.height,
+    this.padding,
+    this.thumbSize,
+    this.animationDuration,
+  }) : assert(width == null || width > 0),
+       assert(height == null || height > 0),
+       assert(padding == null || padding >= 0),
+       assert(thumbSize == null || thumbSize > 0);
 
-  final Color activeColor;
-  final Color inactiveColor;
-  final Color loadingIndicatorColor;
-  final double width;
-  final double height;
-  final double padding;
-  final double thumbSize;
-  final Duration animationDuration;
+  static const FroSwitchThemeData light = FroSwitchThemeData(
+    activeColor: Color(0xFF1989FA),
+    inactiveColor: Color(0xFFDCDCDC),
+    loadingIndicatorColor: Color(0xFF1989FA),
+    width: 52,
+    height: 32,
+    padding: 4,
+    thumbSize: 24,
+    animationDuration: Duration(milliseconds: 180),
+  );
+
+  static const FroSwitchThemeData dark = FroSwitchThemeData(
+    activeColor: Color(0xFF3B82F6),
+    inactiveColor: Color(0xFF4B5563),
+    loadingIndicatorColor: Color(0xFF3B82F6),
+    width: 52,
+    height: 32,
+    padding: 4,
+    thumbSize: 24,
+    animationDuration: Duration(milliseconds: 180),
+  );
+
+  static FroSwitchThemeData fallback(Brightness brightness) {
+    return brightness == Brightness.dark ? dark : light;
+  }
+
+  final Color? activeColor;
+  final Color? inactiveColor;
+  final Color? loadingIndicatorColor;
+  final double? width;
+  final double? height;
+  final double? padding;
+  final double? thumbSize;
+  final Duration? animationDuration;
+
+  FroSwitchThemeData merge(FroSwitchThemeData? other) {
+    if (other == null) {
+      return this;
+    }
+    return copyWith(
+      activeColor: other.activeColor,
+      inactiveColor: other.inactiveColor,
+      loadingIndicatorColor: other.loadingIndicatorColor,
+      width: other.width,
+      height: other.height,
+      padding: other.padding,
+      thumbSize: other.thumbSize,
+      animationDuration: other.animationDuration,
+    );
+  }
 
   FroSwitchThemeData copyWith({
     Color? activeColor,
@@ -50,30 +95,68 @@ class FroSwitchThemeData {
   }
 
   static FroSwitchThemeData lerp(
-    FroSwitchThemeData a,
-    FroSwitchThemeData b,
+    FroSwitchThemeData? a,
+    FroSwitchThemeData? b,
     double t,
   ) {
+    if (identical(a, b)) {
+      return a ?? const FroSwitchThemeData();
+    }
+    a ??= const FroSwitchThemeData();
+    b ??= const FroSwitchThemeData();
     return FroSwitchThemeData(
-      activeColor: Color.lerp(a.activeColor, b.activeColor, t)!,
-      inactiveColor: Color.lerp(a.inactiveColor, b.inactiveColor, t)!,
+      activeColor: Color.lerp(a.activeColor, b.activeColor, t),
+      inactiveColor: Color.lerp(a.inactiveColor, b.inactiveColor, t),
       loadingIndicatorColor: Color.lerp(
         a.loadingIndicatorColor,
         b.loadingIndicatorColor,
         t,
-      )!,
-      width: lerpDouble(a.width, b.width, t)!,
-      height: lerpDouble(a.height, b.height, t)!,
-      padding: lerpDouble(a.padding, b.padding, t)!,
-      thumbSize: lerpDouble(a.thumbSize, b.thumbSize, t)!,
-      animationDuration: Duration(
-        microseconds: lerpDouble(
-          a.animationDuration.inMicroseconds.toDouble(),
-          b.animationDuration.inMicroseconds.toDouble(),
-          t,
-        )!.round(),
+      ),
+      width: lerpDouble(a.width, b.width, t),
+      height: lerpDouble(a.height, b.height, t),
+      padding: lerpDouble(a.padding, b.padding, t),
+      thumbSize: lerpDouble(a.thumbSize, b.thumbSize, t),
+      animationDuration: _lerpDuration(
+        a.animationDuration,
+        b.animationDuration,
+        t,
       ),
     );
+  }
+
+  static Duration? _lerpDuration(Duration? a, Duration? b, double t) {
+    if (a == null && b == null) {
+      return null;
+    }
+    final double begin = (a ?? Duration.zero).inMicroseconds.toDouble();
+    final double end = (b ?? Duration.zero).inMicroseconds.toDouble();
+    return Duration(microseconds: lerpDouble(begin, end, t)!.round());
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    activeColor,
+    inactiveColor,
+    loadingIndicatorColor,
+    width,
+    height,
+    padding,
+    thumbSize,
+    animationDuration,
+  );
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is FroSwitchThemeData &&
+            activeColor == other.activeColor &&
+            inactiveColor == other.inactiveColor &&
+            loadingIndicatorColor == other.loadingIndicatorColor &&
+            width == other.width &&
+            height == other.height &&
+            padding == other.padding &&
+            thumbSize == other.thumbSize &&
+            animationDuration == other.animationDuration;
   }
 }
 

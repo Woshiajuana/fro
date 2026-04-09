@@ -14,19 +14,11 @@ class FroTheme extends ThemeExtension<FroTheme> {
   }
 
   static const FroTheme light = FroTheme(
-    switchTheme: FroSwitchThemeData(
-      activeColor: Color(0xFF1989FA),
-      inactiveColor: Color(0xFFDCDCDC),
-      loadingIndicatorColor: Color(0xFF1989FA),
-    ),
+    switchTheme: FroSwitchThemeData.light,
   );
 
   static const FroTheme dark = FroTheme(
-    switchTheme: FroSwitchThemeData(
-      activeColor: Color(0xFF3B82F6),
-      inactiveColor: Color(0xFF4B5563),
-      loadingIndicatorColor: Color(0xFF3B82F6),
-    ),
+    switchTheme: FroSwitchThemeData.dark,
   );
 
   static FroTheme fallback(Brightness brightness) {

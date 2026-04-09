@@ -60,36 +60,42 @@ class _FroSwitchState extends State<FroSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    final switchTheme = FroSwitchTheme.of(context);
+    final brightness = Theme.of(context).brightness;
+    final switchTheme = FroSwitchThemeData.fallback(
+      brightness,
+    ).merge(FroSwitchTheme.of(context));
 
     final value = widget.value;
 
-    final Color activeColor = widget.activeColor ?? switchTheme.activeColor;
+    final Color activeColor = widget.activeColor ?? switchTheme.activeColor!;
     final Color inactiveColor =
-        widget.inactiveColor ?? switchTheme.inactiveColor;
+        widget.inactiveColor ?? switchTheme.inactiveColor!;
     final Color trackColor = value ? activeColor : inactiveColor;
     final Alignment thumbAlignment = value
         ? Alignment.centerRight
         : Alignment.centerLeft;
-
-    // 滑块大小
-    final thumbSize = switchTheme.height - switchTheme.padding * 2;
+    final double width = switchTheme.width!;
+    final double height = switchTheme.height!;
+    final double padding = switchTheme.padding!;
+    final double thumbSize = switchTheme.thumbSize ?? (height - padding * 2);
+    final Duration animationDuration = switchTheme.animationDuration!;
+    final Color loadingIndicatorColor = switchTheme.loadingIndicatorColor!;
 
     return GestureDetector(
       onTap: _handleSwitch,
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
-        duration: switchTheme.animationDuration,
+        duration: animationDuration,
         curve: Curves.easeOut,
-        width: switchTheme.width,
-        height: switchTheme.height,
-        padding: EdgeInsets.all(switchTheme.padding),
+        width: width,
+        height: height,
+        padding: EdgeInsets.all(padding),
         decoration: BoxDecoration(
           color: trackColor,
-          borderRadius: BorderRadius.circular(switchTheme.height / 2),
+          borderRadius: BorderRadius.circular(height / 2),
         ),
         child: AnimatedAlign(
-          duration: switchTheme.animationDuration,
+          duration: animationDuration,
           curve: Curves.easeOut,
           alignment: thumbAlignment,
           child: Container(
@@ -107,7 +113,7 @@ class _FroSwitchState extends State<FroSwitch> {
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        switchTheme.loadingIndicatorColor,
+                        loadingIndicatorColor,
                       ),
                     ),
                   )
