@@ -19,6 +19,7 @@ class _SwitchPageState extends State<SwitchPage> {
       body: FroScrollView(
         children: [
           Switch(value: _baseValue, onChanged: (value) => {}),
+          TextButton(onPressed: () {}, child: const Text('切换')),
           FroCellGroup(
             children: [
               FroCell(

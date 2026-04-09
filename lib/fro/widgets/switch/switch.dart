@@ -72,6 +72,9 @@ class _FroSwitchState extends State<FroSwitch> {
         ? Alignment.centerRight
         : Alignment.centerLeft;
 
+    // 滑块大小
+    final thumbSize = switchTheme.height - switchTheme.padding * 2;
+
     return GestureDetector(
       onTap: _handleSwitch,
       behavior: HitTestBehavior.opaque,
@@ -90,8 +93,8 @@ class _FroSwitchState extends State<FroSwitch> {
           curve: Curves.easeOut,
           alignment: thumbAlignment,
           child: Container(
-            width: switchTheme.thumbSize,
-            height: switchTheme.thumbSize,
+            width: thumbSize,
+            height: thumbSize,
             decoration: const BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
