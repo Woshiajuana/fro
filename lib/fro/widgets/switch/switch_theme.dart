@@ -20,6 +20,15 @@ class FroSwitchThemeData {
        assert(padding == null || padding >= 0),
        assert(thumbSize == null || thumbSize > 0);
 
+  final Color? activeColor;
+  final Color? inactiveColor;
+  final Color? loadingIndicatorColor;
+  final double? width;
+  final double? height;
+  final double? padding;
+  final double? thumbSize;
+  final Duration? animationDuration;
+
   static const FroSwitchThemeData light = FroSwitchThemeData(
     activeColor: Color(0xFF1989FA),
     inactiveColor: Color(0xFFDCDCDC),
@@ -45,15 +54,6 @@ class FroSwitchThemeData {
   static FroSwitchThemeData fallback(Brightness brightness) {
     return brightness == Brightness.dark ? dark : light;
   }
-
-  final Color? activeColor;
-  final Color? inactiveColor;
-  final Color? loadingIndicatorColor;
-  final double? width;
-  final double? height;
-  final double? padding;
-  final double? thumbSize;
-  final Duration? animationDuration;
 
   FroSwitchThemeData merge(FroSwitchThemeData? other) {
     if (other == null) {
