@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fro/fro/theme/theme.dart';
 import 'package:fro/fro/widgets/cell/cell_group_theme.dart';
 
 class AppTheme {
@@ -7,6 +8,7 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     brightness: Brightness.light,
     extensions: const [
+      FroTheme.light,
       FroCellGroupTheme(
         backgroundColor: Colors.white,
         borderColor: Color(0xFFEAEAEA),
@@ -24,6 +26,7 @@ class AppTheme {
   static final ThemeData dark = ThemeData(
     brightness: Brightness.dark,
     extensions: const [
+      FroTheme.dark,
       FroCellGroupTheme(
         backgroundColor: Color(0xFF1C1C1E),
         borderColor: Color(0xFF2C2C2E),

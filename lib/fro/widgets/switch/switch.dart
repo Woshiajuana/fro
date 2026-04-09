@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'switch_theme.dart';
 
 class FroSwitch extends StatefulWidget {
   const FroSwitch({
@@ -59,10 +60,13 @@ class _FroSwitchState extends State<FroSwitch> {
 
   @override
   Widget build(BuildContext context) {
+    final switchTheme = FroSwitchTheme.of(context);
+
     final value = widget.value;
 
-    final Color activeColor = widget.activeColor ?? const Color(0xFF1989FA);
-    final Color inactiveColor = widget.inactiveColor ?? const Color(0xFFDCDCDC);
+    final Color activeColor = widget.activeColor ?? switchTheme.activeColor;
+    final Color inactiveColor =
+        widget.inactiveColor ?? switchTheme.inactiveColor;
     final Color trackColor = value ? activeColor : inactiveColor;
     final Alignment thumbAlignment = value
         ? Alignment.centerRight
@@ -72,22 +76,22 @@ class _FroSwitchState extends State<FroSwitch> {
       onTap: _handleSwitch,
       behavior: HitTestBehavior.opaque,
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
+        duration: switchTheme.animationDuration,
         curve: Curves.easeOut,
-        width: 52,
-        height: 32,
-        padding: const EdgeInsets.all(4),
+        width: switchTheme.width,
+        height: switchTheme.height,
+        padding: EdgeInsets.all(switchTheme.padding),
         decoration: BoxDecoration(
           color: trackColor,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(switchTheme.height / 2),
         ),
         child: AnimatedAlign(
-          duration: const Duration(milliseconds: 180),
+          duration: switchTheme.animationDuration,
           curve: Curves.easeOut,
           alignment: thumbAlignment,
           child: Container(
-            width: 26,
-            height: 26,
+            width: switchTheme.thumbSize,
+            height: switchTheme.thumbSize,
             decoration: const BoxDecoration(
               color: Colors.white,
               shape: BoxShape.circle,
@@ -99,7 +103,9 @@ class _FroSwitchState extends State<FroSwitch> {
                     height: 14,
                     child: CircularProgressIndicator(
                       strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(activeColor),
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        switchTheme.loadingIndicatorColor,
+                      ),
                     ),
                   )
                 : null,
