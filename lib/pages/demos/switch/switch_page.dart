@@ -12,7 +12,8 @@ class SwitchPage extends StatelessWidget {
         children: [
           FroCellGroup(
             children: [
-              FroCell(onTap: () => {}, labelText: '下拉菜单弹窗', arrow: true),
+              FroCell(onTap: () => {}, labelText: '开关', arrow: true),
+              FroSwitch(),
             ],
           ),
         ],
