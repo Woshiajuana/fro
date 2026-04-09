@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:fro/pages/setting/language_page.dart';
+import 'package:fro/pages/setting/setting_page.dart';
+import 'package:fro/pages/setting/theme_page.dart';
 import 'package:go_router/go_router.dart';
-import 'package:fro/pages/cell_page.dart';
-import 'package:fro/pages/clickable_page.dart';
+import 'package:fro/pages/demos/cell/cell_page.dart';
+import 'package:fro/pages/demos/clickable/clickable_page.dart';
 import 'package:fro/pages/home_page.dart';
 import 'package:fro/pages/index_page.dart';
 import 'package:fro/pages/mine_page.dart';
 import 'package:fro/pages/playground_page.dart';
-import 'package:fro/pages/skeleton_page.dart';
-import 'package:fro/pages/webview_page.dart';
+import 'package:fro/pages/demos/skeleton/skeleton_page.dart';
+import 'package:fro/pages/demos/webview/webview_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -53,29 +55,39 @@ class AppRouter {
           ],
         ),
         GoRoute(
-          path: '/cell',
+          path: '/demos/cell',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const CellPage()),
         ),
         GoRoute(
-          path: '/clickable',
+          path: '/demos/clickable',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const ClickablePage()),
         ),
         GoRoute(
-          path: '/skeleton',
+          path: '/demos/skeleton',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const SkeletonPage()),
         ),
         GoRoute(
-          path: '/webview',
+          path: '/demos/webview',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const WebviewPage()),
         ),
         GoRoute(
-          path: '/language',
+          path: '/setting',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const SettingPage()),
+        ),
+        GoRoute(
+          path: '/setting/language',
           pageBuilder: (context, state) =>
               _buildCupertinoPage(state, const LanguagePage()),
+        ),
+        GoRoute(
+          path: '/setting/theme',
+          pageBuilder: (context, state) =>
+              _buildCupertinoPage(state, const ThemePage()),
         ),
       ],
     );
