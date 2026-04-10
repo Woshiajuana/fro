@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fro/fro/index.dart';
 import 'package:fro/states/theme_state.dart';
 import 'package:provider/provider.dart';
+import 'package:fro/extensions/index.dart';
 
 class ThemePage extends StatelessWidget {
   const ThemePage({super.key});
