@@ -61,25 +61,40 @@ class _FroSwitchState extends State<FroSwitch> {
   @override
   Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
-    final switchTheme = FroSwitchThemeData.fallback(
-      brightness,
-    ).merge(FroSwitchTheme.of(context));
+    final defaultTheme = FroSwitchThemeData.fallback(brightness);
+    final switchTheme = FroSwitchTheme.of(context);
 
     final value = widget.value;
 
-    final Color activeColor = widget.activeColor ?? switchTheme.activeColor!;
+    final Color activeColor =
+        widget.activeColor ??
+        switchTheme.activeColor ??
+        defaultTheme.activeColor ??
+        const Color(0xFF1989FA);
     final Color inactiveColor =
-        widget.inactiveColor ?? switchTheme.inactiveColor!;
+        widget.inactiveColor ??
+        switchTheme.inactiveColor ??
+        defaultTheme.inactiveColor ??
+        const Color(0xFFDCDCDC);
     final Color trackColor = value ? activeColor : inactiveColor;
     final Alignment thumbAlignment = value
         ? Alignment.centerRight
         : Alignment.centerLeft;
-    final double width = switchTheme.width!;
-    final double height = switchTheme.height!;
-    final double padding = switchTheme.padding!;
-    final double thumbSize = switchTheme.thumbSize ?? (height - padding * 2);
-    final Duration animationDuration = switchTheme.animationDuration!;
-    final Color loadingIndicatorColor = switchTheme.loadingIndicatorColor!;
+    final double width = switchTheme.width ?? defaultTheme.width ?? 52;
+    final double height = switchTheme.height ?? defaultTheme.height ?? 32;
+    final double padding = switchTheme.padding ?? defaultTheme.padding ?? 4;
+    final double thumbSize =
+        switchTheme.thumbSize ??
+        defaultTheme.thumbSize ??
+        (height - padding * 2);
+    final Duration animationDuration =
+        switchTheme.animationDuration ??
+        defaultTheme.animationDuration ??
+        const Duration(milliseconds: 180);
+    final Color loadingIndicatorColor =
+        switchTheme.loadingIndicatorColor ??
+        defaultTheme.loadingIndicatorColor ??
+        const Color(0xFF1989FA);
 
     return GestureDetector(
       onTap: _handleSwitch,

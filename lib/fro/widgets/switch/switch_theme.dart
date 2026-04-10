@@ -55,22 +55,6 @@ class FroSwitchThemeData {
     return brightness == Brightness.dark ? dark : light;
   }
 
-  FroSwitchThemeData merge(FroSwitchThemeData? other) {
-    if (other == null) {
-      return this;
-    }
-    return copyWith(
-      activeColor: other.activeColor,
-      inactiveColor: other.inactiveColor,
-      loadingIndicatorColor: other.loadingIndicatorColor,
-      width: other.width,
-      height: other.height,
-      padding: other.padding,
-      thumbSize: other.thumbSize,
-      animationDuration: other.animationDuration,
-    );
-  }
-
   FroSwitchThemeData copyWith({
     Color? activeColor,
     Color? inactiveColor,

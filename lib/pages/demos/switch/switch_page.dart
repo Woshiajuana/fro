@@ -18,6 +18,7 @@ class _SwitchPageState extends State<SwitchPage> {
       appBar: AppBar(title: const Text('开关')),
       body: FroScrollView(
         children: [
+          const ListTile(title: Text('基础开关')),
           Switch(value: _baseValue, onChanged: (value) => {}),
           TextButton(onPressed: () {}, child: const Text('切换')),
           FroCellGroup(
