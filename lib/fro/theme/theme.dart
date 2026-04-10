@@ -4,7 +4,7 @@ import '../widgets/switch/switch_theme.dart';
 
 @immutable
 class FroTheme extends ThemeExtension<FroTheme> {
-  const FroTheme({required this.switchTheme});
+  const FroTheme({this.switchTheme = const FroSwitchThemeData()});
 
   final FroSwitchThemeData switchTheme;
 
@@ -13,13 +13,9 @@ class FroTheme extends ThemeExtension<FroTheme> {
     return theme.extension<FroTheme>() ?? FroTheme.fallback(theme.brightness);
   }
 
-  static const FroTheme light = FroTheme(
-    switchTheme: FroSwitchThemeData.light,
-  );
+  static const FroTheme light = FroTheme(switchTheme: FroSwitchThemeData.light);
 
-  static const FroTheme dark = FroTheme(
-    switchTheme: FroSwitchThemeData.dark,
-  );
+  static const FroTheme dark = FroTheme(switchTheme: FroSwitchThemeData.dark);
 
   static FroTheme fallback(Brightness brightness) {
     return brightness == Brightness.dark ? dark : light;
