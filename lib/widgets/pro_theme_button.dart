@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fro/fro/index.dart';
 import 'package:fro/states/index.dart';
 import 'package:provider/provider.dart';
 
@@ -8,7 +9,11 @@ class ProThemeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeMode currentMode = context.watch<ThemeState>().themeMode;
-    final bool isDark = currentMode == ThemeMode.dark;
+    final bool isDark = switch (currentMode) {
+      ThemeMode.dark => true,
+      ThemeMode.light => false,
+      ThemeMode.system => FroHelper.isDarkMode(context),
+    };
     return Material(
       color: Colors.transparent,
       child: InkWell(
