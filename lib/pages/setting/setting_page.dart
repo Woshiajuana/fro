@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fro/fro/index.dart';
 import 'package:fro/states/theme_state.dart';
+import 'package:provider/provider.dart';
 
 class SettingPage extends StatelessWidget {
   const SettingPage({super.key});
