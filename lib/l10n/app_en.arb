@@ -1,5 +1,25 @@
 {
     "appTitle": "FRO",
+    "test": "Test",
 
+    "mainTabbarHome": "Home",
+    "mainTabbarMine": "Mine",
+
+    "settingsTitle": "Settings",
+    "settingsDisplay": "Display",
+    "settingsLanguage": "Language",
+    "settingsTheme": "Theme",
+
+    "languageSettingsTitle": "Language",
+    "languageSettingsAutomatic": "Automatic",
+    "languageSettingsAutomaticDescription": "Note: System presets only support languages from the list below.",
+
+    "themeSettingsTitle": "Theme",
+    "themeSettingsAutomatic": "Automatic",
+    "themeSettingsAutomaticDescription": "After activation, it will follow the system to turn on or off the dark mode",
+    "themeSettingsCustom": "Custom",
+    "themeSettingsLight": "Light Mode",
+    "themeSettingsDark": "Dark Mode",
+   
     "end": "end"
 }

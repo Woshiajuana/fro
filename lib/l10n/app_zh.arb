@@ -1,5 +1,25 @@
 {
     "appTitle": "FRO",
+    "test": "测试",
 
-    "end": "结束"
+    "mainTabbarHome": "首页",
+    "mainTabbarMine": "我的",
+
+    "settingsTitle": "设置",
+    "settingsDisplay": "界面和显示",
+    "settingsLanguage": "语言设置",
+    "settingsTheme": "主题设置",
+
+    "languageSettingsTitle": "语言设置",
+    "languageSettingsAutomatic": "跟随系统",
+    "languageSettingsAutomaticDescription": "注意：跟随系统仅支持以下列表中的语言。",
+
+    "themeSettingsTitle": "主题设置",
+    "themeSettingsAutomatic": "跟随系统",
+    "themeSettingsAutomaticDescription": "开启后，将跟随系统打开或关闭深色模式",
+    "themeSettingsCustom": "手动选择",
+    "themeSettingsLight": "亮色模式",
+    "themeSettingsDark": "深色模式",
+    
+    "end": "end"
 }
