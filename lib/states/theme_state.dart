@@ -14,6 +14,8 @@ class ThemeState extends ChangeNotifier {
 
   String get themeModeName => _themeModeName;
 
+  bool get isFollowSystem => themeMode == ThemeMode.system;
+
   ThemeMode get themeMode {
     if (_themeModeName == ThemeMode.light.name) {
       return ThemeMode.light;
