@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:fro/l10n/app_localizations.dart';
 import 'package:fro/states/index.dart';
+import 'package:fro/widgets/pro_theme_button.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:fro/router/app_router.dart';
@@ -50,7 +51,21 @@ class App extends StatelessWidget {
               routerConfig: _router,
 
               // 初始化 BotToast
-              builder: BotToastInit(),
+              builder: (context, child) {
+                return BotToastInit()(
+                  context,
+                  Stack(
+                    children: [
+                      child ?? const SizedBox.shrink(),
+                      const Positioned(
+                        right: 16,
+                        bottom: 20,
+                        child: ProThemeButton(),
+                      ),
+                    ],
+                  ),
+                );
+              },
             );
           },
         );
