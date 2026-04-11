@@ -9,8 +9,8 @@ class ThemePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themeState = context.watch<ThemeState>();
-    var themeMode = themeState.themeMode;
+    final themeState = context.watch<ThemeState>();
+    final themeMode = themeState.themeMode;
 
     List<Widget> children = [
       FroCellGroup(

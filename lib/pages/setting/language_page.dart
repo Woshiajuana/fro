@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fro/extensions/index.dart';
+import 'package:fro/fro/index.dart';
 import 'package:provider/provider.dart';
 import 'package:fro/states/index.dart';
 
@@ -7,48 +9,48 @@ class LanguagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final LocaleState localeState = context.watch<LocaleState>();
-    final bool isFollowSystem = localeState.isFollowSystem;
-    final String languageCode = localeState.languageCode;
+    final localeState = context.watch<LocaleState>();
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('语言设置')),
-      body: ListView(
+    List<Widget> children = [
+      FroCellGroup(
         children: [
-          SwitchListTile.adaptive(
-            title: const Text('跟随系统'),
-            value: isFollowSystem,
-            onChanged: (value) {
-              if (value) {
-                context.read<LocaleState>().followSystem();
-                return;
-              }
-              if (languageCode == 'en') {
-                return;
-              }
-              context.read<LocaleState>().useChinese();
-            },
+          FroCell(
+            labelText: context.l10n.languageSettingsAutomatic,
+            trailing: Switch(
+              value: localeState.isFollowSystem,
+              onChanged: (v) {
+                if (v) {
+                  localeState.followSystem();
+                } else {
+                  // ...
+                }
+              },
+            ),
           ),
-          if (!isFollowSystem) ...[
-            const Divider(height: 1),
-            ListTile(
-              title: const Text('中文'),
-              trailing: languageCode == 'zh'
-                  ? const Icon(Icons.check, color: Color(0xFF1989FA))
-                  : null,
-              onTap: () => context.read<LocaleState>().useChinese(),
-            ),
-            const Divider(height: 1),
-            ListTile(
-              title: const Text('English'),
-              trailing: languageCode == 'en'
-                  ? const Icon(Icons.check, color: Color(0xFF1989FA))
-                  : null,
-              onTap: () => context.read<LocaleState>().useEnglish(),
-            ),
-          ],
         ],
       ),
+    ];
+
+    if (!localeState.isFollowSystem) {
+      // ...
+      children.addAll(
+        localeState.languageCodeLabelMap.entries.map((e) {
+          return FroCell(
+            onTap: () {
+              localeState.setLanguageCode(e.key);
+            },
+            labelText: e.value,
+            value: localeState.languageCode == e.key
+                ? Icon(Icons.check, color: context.theme.colorScheme.primary)
+                : null,
+          );
+        }).toList(),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(title: Text(context.l10n.languageSettingsTitle)),
+      body: FroScrollView(children: children),
     );
   }
 }
