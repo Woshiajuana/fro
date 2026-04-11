@@ -22,7 +22,14 @@ class LanguagePage extends StatelessWidget {
                 if (v) {
                   localeState.followSystem();
                 } else {
-                  // ...
+                  final String systemCode = Localizations.localeOf(
+                    context,
+                  ).languageCode;
+                  final String nextCode =
+                      localeState.languageCodeLabelMap.containsKey(systemCode)
+                      ? systemCode
+                      : 'zh';
+                  localeState.setLanguageCode(nextCode);
                 }
               },
             ),
@@ -32,19 +39,20 @@ class LanguagePage extends StatelessWidget {
     ];
 
     if (!localeState.isFollowSystem) {
-      // ...
-      children.addAll(
-        localeState.languageCodeLabelMap.entries.map((e) {
-          return FroCell(
-            onTap: () {
-              localeState.setLanguageCode(e.key);
-            },
-            labelText: e.value,
-            value: localeState.languageCode == e.key
-                ? Icon(Icons.check, color: context.theme.colorScheme.primary)
-                : null,
-          );
-        }).toList(),
+      children.add(
+        FroCellGroup(
+          children: localeState.languageCodeLabelMap.entries.map((e) {
+            return FroCell(
+              onTap: () {
+                localeState.setLanguageCode(e.key);
+              },
+              labelText: e.value,
+              value: localeState.languageCode == e.key
+                  ? Icon(Icons.check, color: context.theme.colorScheme.primary)
+                  : null,
+            );
+          }).toList(),
+        ),
       );
     }
 

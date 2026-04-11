@@ -25,6 +25,11 @@ class LocaleState extends ChangeNotifier {
 
   bool get isFollowSystem => _languageCode == _systemLanguageCode;
 
+  Map<String, String> get languageCodeLabelMap => const {
+    'zh': '简体中文',
+    'en': 'English',
+  };
+
   Future<void> setLanguageCode(String languageCode) async {
     final String nextCode = _normalizeCode(languageCode);
     if (_languageCode == nextCode) {
