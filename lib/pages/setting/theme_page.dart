@@ -22,13 +22,13 @@ class ThemePage extends StatelessWidget {
               value: themeState.isFollowSystem,
               onChanged: (v) {
                 if (v) {
-                  themeState.setThemeMode(ThemeMode.system);
+                  themeState.followSystem();
                 } else {
-                  themeState.setThemeMode(
-                    FroHelper.isDarkMode(context)
-                        ? ThemeMode.dark
-                        : ThemeMode.light,
-                  );
+                  if (FroHelper.isDarkMode(context)) {
+                    themeState.useDark();
+                  } else {
+                    themeState.useLight();
+                  }
                 }
               },
             ),
