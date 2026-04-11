@@ -10,16 +10,17 @@
     "settingsLanguage": "Language",
     "settingsTheme": "Theme",
 
-    "languageSettingsTitle": "Language",
-    "languageSettingsAutomatic": "Automatic",
-    "languageSettingsAutomaticDescription": "Note: System presets only support languages from the list below.",
+    "languageTitle": "Language",
+    "languageAutomatic": "Automatic",
+    "languageAutomaticDescription": "Note: System presets only support languages from the list below.",
+    "languageCustom": "Custom",
 
-    "themeSettingsTitle": "Theme",
-    "themeSettingsAutomatic": "Automatic",
-    "themeSettingsAutomaticDescription": "After activation, it will follow the system to turn on or off the dark mode",
-    "themeSettingsCustom": "Custom",
-    "themeSettingsLight": "Light Mode",
-    "themeSettingsDark": "Dark Mode",
+    "themeTitle": "Theme",
+    "themeAutomatic": "Automatic",
+    "themeAutomaticDescription": "After activation, it will follow the system to turn on or off the dark mode",
+    "themeCustom": "Custom",
+    "themeLight": "Light Mode",
+    "themeDark": "Dark Mode",
    
     "end": "end"
 }

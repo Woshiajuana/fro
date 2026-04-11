@@ -15,7 +15,8 @@ class LanguagePage extends StatelessWidget {
       FroCellGroup(
         children: [
           FroCell(
-            labelText: context.l10n.languageSettingsAutomatic,
+            labelText: context.l10n.languageAutomatic,
+            descriptionText: context.l10n.languageAutomaticDescription,
             trailing: Switch(
               value: localeState.isFollowSystem,
               onChanged: (v) {
@@ -41,6 +42,7 @@ class LanguagePage extends StatelessWidget {
     if (!localeState.isFollowSystem) {
       children.add(
         FroCellGroup(
+          titleText: context.l10n.languageCustom,
           children: localeState.languageCodeLabelMap.entries.map((e) {
             return FroCell(
               onTap: () {
@@ -57,7 +59,7 @@ class LanguagePage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.languageSettingsTitle)),
+      appBar: AppBar(title: Text(context.l10n.languageTitle)),
       body: FroScrollView(children: children),
     );
   }

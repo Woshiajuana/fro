@@ -33,33 +33,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsTheme => 'Theme';
 
   @override
-  String get languageSettingsTitle => 'Language';
+  String get languageTitle => 'Language';
 
   @override
-  String get languageSettingsAutomatic => 'Automatic';
+  String get languageAutomatic => 'Automatic';
 
   @override
-  String get languageSettingsAutomaticDescription =>
+  String get languageAutomaticDescription =>
       'Note: System presets only support languages from the list below.';
 
   @override
-  String get themeSettingsTitle => 'Theme';
+  String get languageCustom => 'Custom';
 
   @override
-  String get themeSettingsAutomatic => 'Automatic';
+  String get themeTitle => 'Theme';
 
   @override
-  String get themeSettingsAutomaticDescription =>
+  String get themeAutomatic => 'Automatic';
+
+  @override
+  String get themeAutomaticDescription =>
       'After activation, it will follow the system to turn on or off the dark mode';
 
   @override
-  String get themeSettingsCustom => 'Custom';
+  String get themeCustom => 'Custom';
 
   @override
-  String get themeSettingsLight => 'Light Mode';
+  String get themeLight => 'Light Mode';
 
   @override
-  String get themeSettingsDark => 'Dark Mode';
+  String get themeDark => 'Dark Mode';
 
   @override
   String get end => 'end';

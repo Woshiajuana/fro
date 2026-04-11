@@ -16,8 +16,8 @@ class ThemePage extends StatelessWidget {
       FroCellGroup(
         children: [
           FroCell(
-            labelText: context.l10n.themeSettingsAutomatic,
-            descriptionText: context.l10n.themeSettingsAutomaticDescription,
+            labelText: context.l10n.themeAutomatic,
+            descriptionText: context.l10n.themeAutomaticDescription,
             trailing: Switch(
               value: themeState.isFollowSystem,
               onChanged: (v) {
@@ -45,16 +45,16 @@ class ThemePage extends StatelessWidget {
 
       children.add(
         FroCellGroup(
-          titleText: context.l10n.themeSettingsCustom,
+          titleText: context.l10n.themeCustom,
           children: [
             FroCell(
               onTap: () => themeState.setThemeMode(ThemeMode.light),
-              labelText: context.l10n.themeSettingsLight,
+              labelText: context.l10n.themeLight,
               trailing: themeMode == ThemeMode.light ? checkIcon : null,
             ),
             FroCell(
               onTap: () => themeState.setThemeMode(ThemeMode.dark),
-              labelText: context.l10n.themeSettingsDark,
+              labelText: context.l10n.themeDark,
               trailing: themeMode == ThemeMode.dark ? checkIcon : null,
             ),
           ],
@@ -63,7 +63,7 @@ class ThemePage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(context.l10n.themeSettingsTitle)),
+      appBar: AppBar(title: Text(context.l10n.themeTitle)),
       body: FroScrollView(children: children),
     );
   }

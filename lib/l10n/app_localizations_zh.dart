@@ -33,31 +33,34 @@ class AppLocalizationsZh extends AppLocalizations {
   String get settingsTheme => '主题设置';
 
   @override
-  String get languageSettingsTitle => '语言设置';
+  String get languageTitle => '语言设置';
 
   @override
-  String get languageSettingsAutomatic => '跟随系统';
+  String get languageAutomatic => '跟随系统';
 
   @override
-  String get languageSettingsAutomaticDescription => '注意：跟随系统仅支持以下列表中的语言。';
+  String get languageAutomaticDescription => '注意：跟随系统仅支持以下列表中的语言。';
 
   @override
-  String get themeSettingsTitle => '主题设置';
+  String get languageCustom => '手动选择';
 
   @override
-  String get themeSettingsAutomatic => '跟随系统';
+  String get themeTitle => '主题设置';
 
   @override
-  String get themeSettingsAutomaticDescription => '开启后，将跟随系统打开或关闭深色模式';
+  String get themeAutomatic => '跟随系统';
 
   @override
-  String get themeSettingsCustom => '手动选择';
+  String get themeAutomaticDescription => '开启后，将跟随系统打开或关闭深色模式';
 
   @override
-  String get themeSettingsLight => '亮色模式';
+  String get themeCustom => '手动选择';
 
   @override
-  String get themeSettingsDark => '深色模式';
+  String get themeLight => '亮色模式';
+
+  @override
+  String get themeDark => '深色模式';
 
   @override
   String get end => 'end';

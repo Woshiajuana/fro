@@ -10,16 +10,17 @@
     "settingsLanguage": "语言设置",
     "settingsTheme": "主题设置",
 
-    "languageSettingsTitle": "语言设置",
-    "languageSettingsAutomatic": "跟随系统",
-    "languageSettingsAutomaticDescription": "注意：跟随系统仅支持以下列表中的语言。",
+    "languageTitle": "语言设置",
+    "languageAutomatic": "跟随系统",
+    "languageAutomaticDescription": "注意：跟随系统仅支持以下列表中的语言。",
+    "languageCustom": "手动选择",
 
-    "themeSettingsTitle": "主题设置",
-    "themeSettingsAutomatic": "跟随系统",
-    "themeSettingsAutomaticDescription": "开启后，将跟随系统打开或关闭深色模式",
-    "themeSettingsCustom": "手动选择",
-    "themeSettingsLight": "亮色模式",
-    "themeSettingsDark": "深色模式",
+    "themeTitle": "主题设置",
+    "themeAutomatic": "跟随系统",
+    "themeAutomaticDescription": "开启后，将跟随系统打开或关闭深色模式",
+    "themeCustom": "手动选择",
+    "themeLight": "亮色模式",
+    "themeDark": "深色模式",
     
     "end": "end"
 }

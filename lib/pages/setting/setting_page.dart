@@ -19,28 +19,34 @@ class SettingPage extends StatelessWidget {
             children: [
               Consumer<LocaleState>(
                 builder: (context, localeState, _) {
-                  var languageCodeName = localeState.getLanguageCodeName(
-                    context,
-                  );
+                  final String languageCodeName = localeState.isFollowSystem
+                      ? context.l10n.languageAutomatic
+                      : (localeState.languageCodeLabelMap[localeState
+                                .languageCode] ??
+                            '简体中文');
                   return FroCell(
                     onTap: () {
                       context.push('/setting/language');
                     },
-                    labelText: context.l10n.settingsLanguage,
-                    value: languageCodeName,
+                    labelText: context.l10n.languageTitle,
+                    valueText: languageCodeName,
                     arrow: true,
                   );
                 },
               ),
               Consumer<ThemeState>(
                 builder: (context, themeState, _) {
-                  var themeModeName = themeState.getThemeModeName(context);
+                  final String themeModeName = switch (themeState.themeMode) {
+                    ThemeMode.system => context.l10n.themeAutomatic,
+                    ThemeMode.light => context.l10n.themeLight,
+                    ThemeMode.dark => context.l10n.themeDark,
+                  };
                   return FroCell(
                     onTap: () {
                       context.push('/setting/theme');
                     },
                     labelText: context.l10n.settingsTheme,
-                    value: themeModeName,
+                    valueText: themeModeName,
                     arrow: true,
                   );
                 },
