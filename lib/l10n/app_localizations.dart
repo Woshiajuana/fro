@@ -104,10 +104,106 @@ abstract class AppLocalizations {
   /// **'FRO'**
   String get appTitle;
 
+  /// No description provided for @test.
+  ///
+  /// In zh, this message translates to:
+  /// **'测试'**
+  String get test;
+
+  /// No description provided for @mainTabbarHome.
+  ///
+  /// In zh, this message translates to:
+  /// **'首页'**
+  String get mainTabbarHome;
+
+  /// No description provided for @mainTabbarMine.
+  ///
+  /// In zh, this message translates to:
+  /// **'我的'**
+  String get mainTabbarMine;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'设置'**
+  String get settingsTitle;
+
+  /// No description provided for @settingsDisplay.
+  ///
+  /// In zh, this message translates to:
+  /// **'界面和显示'**
+  String get settingsDisplay;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In zh, this message translates to:
+  /// **'语言设置'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsTheme.
+  ///
+  /// In zh, this message translates to:
+  /// **'主题设置'**
+  String get settingsTheme;
+
+  /// No description provided for @languageSettingsTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'语言设置'**
+  String get languageSettingsTitle;
+
+  /// No description provided for @languageSettingsAutomatic.
+  ///
+  /// In zh, this message translates to:
+  /// **'跟随系统'**
+  String get languageSettingsAutomatic;
+
+  /// No description provided for @languageSettingsAutomaticDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'注意：跟随系统仅支持以下列表中的语言。'**
+  String get languageSettingsAutomaticDescription;
+
+  /// No description provided for @themeSettingsTitle.
+  ///
+  /// In zh, this message translates to:
+  /// **'主题设置'**
+  String get themeSettingsTitle;
+
+  /// No description provided for @themeSettingsAutomatic.
+  ///
+  /// In zh, this message translates to:
+  /// **'跟随系统'**
+  String get themeSettingsAutomatic;
+
+  /// No description provided for @themeSettingsAutomaticDescription.
+  ///
+  /// In zh, this message translates to:
+  /// **'开启后，将跟随系统打开或关闭深色模式'**
+  String get themeSettingsAutomaticDescription;
+
+  /// No description provided for @themeSettingsCustom.
+  ///
+  /// In zh, this message translates to:
+  /// **'手动选择'**
+  String get themeSettingsCustom;
+
+  /// No description provided for @themeSettingsLight.
+  ///
+  /// In zh, this message translates to:
+  /// **'亮色模式'**
+  String get themeSettingsLight;
+
+  /// No description provided for @themeSettingsDark.
+  ///
+  /// In zh, this message translates to:
+  /// **'深色模式'**
+  String get themeSettingsDark;
+
   /// No description provided for @end.
   ///
   /// In zh, this message translates to:
-  /// **'结束'**
+  /// **'end'**
   String get end;
 }
 

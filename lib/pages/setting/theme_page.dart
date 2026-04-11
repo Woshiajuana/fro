@@ -7,7 +7,7 @@ import 'package:fro/extensions/index.dart';
 class ThemePage extends StatelessWidget {
   const ThemePage({super.key});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     var themeState = context.watch<ThemeState>();
     var themeMode = themeState.themeMode;
@@ -16,8 +16,8 @@ class ThemePage extends StatelessWidget {
       FroCellGroup(
         children: [
           FroCell(
-            label: context.l10n.themeSettingsAutomatic,
-            description: context.l10n.themeSettingsAutomaticDescription,
+            labelText: context.l10n.themeSettingsAutomatic,
+            descriptionText: context.l10n.themeSettingsAutomaticDescription,
             trailing: Switch(
               value: themeState.isFollowSystem,
               onChanged: (v) {
@@ -45,16 +45,16 @@ class ThemePage extends StatelessWidget {
 
       children.add(
         FroCellGroup(
-          title: context.l10n.themeSettingsCustom,
+          titleText: context.l10n.themeSettingsCustom,
           children: [
             FroCell(
               onTap: () => themeState.setThemeMode(ThemeMode.light),
-              label: context.l10n.themeSettingsLight,
+              labelText: context.l10n.themeSettingsLight,
               trailing: themeMode == ThemeMode.light ? checkIcon : null,
             ),
             FroCell(
               onTap: () => themeState.setThemeMode(ThemeMode.dark),
-              label: context.l10n.themeSettingsDark,
+              labelText: context.l10n.themeSettingsDark,
               trailing: themeMode == ThemeMode.dark ? checkIcon : null,
             ),
           ],
