@@ -17,7 +17,7 @@ class LanguagePage extends StatelessWidget {
           FroCell(
             labelText: context.l10n.languageAutomatic,
             descriptionText: context.l10n.languageAutomaticDescription,
-            trailing: Switch(
+            trailing: FroSwitch(
               value: localeState.isFollowSystem,
               onChanged: (v) {
                 if (v) {

@@ -18,7 +18,7 @@ class ThemePage extends StatelessWidget {
           FroCell(
             labelText: context.l10n.themeAutomatic,
             descriptionText: context.l10n.themeAutomaticDescription,
-            trailing: Switch(
+            trailing: FroSwitch(
               value: themeState.isFollowSystem,
               onChanged: (v) {
                 if (v) {
